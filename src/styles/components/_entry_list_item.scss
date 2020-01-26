@@ -1,8 +1,5 @@
 .entry-list-item {
-  background: $card-color;
-  color: $text-color;
-  margin: 0.5em 0;
-  padding: 8px;
+  @extend %card-stock;
   h2 {
     color: $accent-color;
     font-family: $accent-text;

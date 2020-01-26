@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import EntryContext from "../../context/entries/entryContext";
 import EntryList from "../entries/EntryList";
 import Pagination from "../entries/parts/Pagination";
+
+import MenuState from "../../context/menu/menuState";
+import MainMenu from "../entries/parts/MainMenu";
 
 const Entries = () => {
   const entryContext = useContext(EntryContext);
@@ -13,8 +17,8 @@ const Entries = () => {
     // eslint-disable-next-line
   }, [page]);
   return (
-    <div>
-      <div>
+    <div className="entry-container">
+      <div className="entry-container_list">
         <EntryList entries={entries} />
         {!!Object.keys(pagination) && (
           <Pagination
@@ -23,6 +27,12 @@ const Entries = () => {
             handlePagination={setPage}
           />
         )}
+      </div>
+
+      <div className="entry-container_menu">
+        <MenuState>
+          <MainMenu />
+        </MenuState>
       </div>
     </div>
   );
