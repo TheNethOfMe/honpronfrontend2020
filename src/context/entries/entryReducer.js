@@ -5,7 +5,8 @@ export default (state, action) => {
     case GET_ENTRIES:
       return {
         ...state,
-        entries: action.payload
+        entries: action.payload.data,
+        pagination: action.payload.pagination
       };
     default:
       return {
