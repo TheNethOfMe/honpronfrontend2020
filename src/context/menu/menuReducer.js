@@ -1,12 +1,11 @@
-import { GET_ENTRIES } from "../types";
+import { GET_MENU } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
-    case GET_ENTRIES:
+    case GET_MENU:
       return {
         ...state,
-        entries: action.payload.data,
-        pagination: action.payload.pagination
+        menuItems: action.payload
       };
     default:
       return {

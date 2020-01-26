@@ -1,2 +1,9 @@
-@import "./styles/base/variables.scss";
-@import "./styles/components/test.scss";
+@import "./styles/base/reset";
+@import "./styles/base/variables";
+@import "./styles/base/extensions";
+@import "./styles/base/main";
+
+@import "./styles/components/navbar";
+@import "./styles/components/entry_list";
+@import "./styles/components/entry_list_item";
+@import "./styles/components/pagination";
