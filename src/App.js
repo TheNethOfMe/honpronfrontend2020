@@ -1,10 +1,15 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./components/base/Navbar";
-import About from "./components/pages/About";
-import Entries from "./components/pages/Entries";
 
+import BasicComponent from "./components/routers/BasicComponent";
+import Navbar from "./components/base/Navbar";
+
+import Entries from "./components/pages/Entries";
 import EntryState from "./context/entries/entryState";
+
+import About from "./components/pages/About";
+import FaqState from "./context/about/faqState";
+
 import "./App.scss";
 
 function App() {
@@ -16,7 +21,12 @@ function App() {
           <div className="site-container">
             <Switch>
               <Route exact path="/" component={Entries} />
-              <Route exact path="/about" component={About} />
+              <BasicComponent
+                exact
+                path="/about"
+                component={About}
+                context={FaqState}
+              />
             </Switch>
           </div>
         </Fragment>

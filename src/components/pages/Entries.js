@@ -4,8 +4,7 @@ import EntryContext from "../../context/entries/entryContext";
 import EntryList from "../entries/EntryList";
 import Pagination from "../entries/parts/Pagination";
 
-import MenuState from "../../context/menu/menuState";
-import MainMenu from "../entries/parts/MainMenu";
+import MenuWithContext from "../menu/MenuWithContext";
 
 const Entries = () => {
   const entryContext = useContext(EntryContext);
@@ -30,9 +29,7 @@ const Entries = () => {
       </div>
 
       <div className="entry-container_menu">
-        <MenuState>
-          <MainMenu />
-        </MenuState>
+        <MenuWithContext />
       </div>
     </div>
   );
