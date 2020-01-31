@@ -1,6 +1,9 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import AuthState from "./context/auth/authState";
+import Login from "./components/auth/Login";
+
 import BasicComponent from "./components/routers/BasicComponent";
 import Navbar from "./components/base/Navbar";
 
@@ -14,24 +17,30 @@ import "./App.scss";
 
 function App() {
   return (
-    <EntryState>
+    <AuthState>
       <Router>
         <Fragment>
           <Navbar />
           <div className="site-container">
             <Switch>
-              <Route exact path="/" component={Entries} />
+              <BasicComponent
+                exact
+                path="/"
+                component={Entries}
+                context={EntryState}
+              />
               <BasicComponent
                 exact
                 path="/about"
                 component={About}
                 context={FaqState}
               />
+              <Route exact path="/login" component={Login} />
             </Switch>
           </div>
         </Fragment>
       </Router>
-    </EntryState>
+    </AuthState>
   );
 }
 
