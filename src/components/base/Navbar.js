@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import AuthContext from "../../context/auth/authContext";
+
 const Navbar = () => {
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated, username, getUser, logoutUser } = authContext;
+  useEffect(() => {
+    getUser();
+    // eslint-disable-next-line
+  }, [isAuthenticated]);
   return (
     <nav className="navbar">
       <div className="navbar-inner">
@@ -9,10 +17,20 @@ const Navbar = () => {
         <div className="navbar_right">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              {isAuthenticated ? (
+                <Link to="/">[{username}]</Link>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
             </li>
             <li>
-              <Link to="/about">About</Link>
+              {isAuthenticated ? (
+                <a href="@" onClick={logoutUser}>
+                  Logout
+                </a>
+              ) : (
+                <Link to="/">Register</Link>
+              )}
             </li>
           </ul>
         </div>
